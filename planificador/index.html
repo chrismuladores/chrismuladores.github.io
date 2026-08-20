@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planificador | Simulador de procesos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <a class="back-link" href="../index.html">← Simuladores</a>
+        <div class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div>
+          <p class="eyebrow">Laboratorio de sistemas operativos</p>
+          <h1>Planificador de <span>procesos</span></h1>
+        </div>
+        <div class="hero-tools">
+          <p class="hero-copy">Carga tus procesos, elige una estrategia y observa cómo se reparte el procesador.</p>
+          <button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Activar modo oscuro">
+            <span class="theme-track" aria-hidden="true"><span class="theme-knob">☼</span></span>
+            <span class="theme-label">Modo oscuro</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <aside class="control-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">01 · Entrada</p>
+              <h2>Procesos</h2>
+            </div>
+            <button class="text-button" id="sampleBtn" type="button">Cargar ejemplo</button>
+          </div>
+
+          <form id="processForm" class="process-form">
+            <label>Nombre<input id="nameInput" maxlength="8" value="P1" autocomplete="off" /></label>
+            <label>Llegada<input id="arrivalInput" type="number" min="0" value="0" /></label>
+            <label>Ráfaga CPU<input id="burstInput" type="number" min="1" value="5" /></label>
+            <button class="add-button" type="submit"><span>+</span> Agregar proceso</button>
+          </form>
+
+          <div class="process-list-wrap">
+            <div class="list-caption"><span>Proceso</span><span>Llegada</span><span>Ráfaga</span></div>
+            <div id="processList" class="process-list"></div>
+          </div>
+          <button class="clear-button" id="clearBtn" type="button">Limpiar lista</button>
+
+          <section class="exercise-generator" aria-labelledby="exerciseTitle">
+            <div>
+              <p class="section-label">Generador</p>
+              <h3 id="exerciseTitle">Nuevo ejercicio</h3>
+              <p class="generator-copy">Crea un conjunto de procesos para practicar.</p>
+            </div>
+            <div class="difficulty-buttons" aria-label="Dificultad del ejercicio">
+              <button class="difficulty-button" data-difficulty="easy" type="button">Fácil</button>
+              <button class="difficulty-button" data-difficulty="medium" type="button">Medio</button>
+              <button class="difficulty-button" data-difficulty="hard" type="button">Alto</button>
+            </div>
+            <form id="customExerciseForm" class="custom-exercise-form">
+              <span class="custom-title">Personalizar ejercicio</span>
+              <label>Procesos<input id="exerciseCount" type="number" min="1" max="12" value="4" /></label>
+              <label>Llegada máxima<input id="maxArrival" type="number" min="0" max="40" value="5" /></label>
+              <label>Ráfaga máxima<input id="maxBurst" type="number" min="1" max="30" value="8" /></label>
+              <label>Quantum máximo<input id="maxQuantum" type="number" min="1" max="15" value="4" /></label>
+              <button class="custom-generate-button" type="submit">Generar personalizado</button>
+            </form>
+          </section>
+        </aside>
+
+        <section class="simulator">
+          <div class="algorithm-row">
+            <div>
+              <p class="section-label">02 · Estrategia</p>
+              <h2>Algoritmo de planificación</h2>
+            </div>
+            <label class="quantum-control" id="quantumControl">Quantum <input id="quantumInput" type="number" min="1" value="2" /></label>
+          </div>
+          <div class="algorithm-tabs" role="tablist" aria-label="Algoritmos">
+            <button class="algorithm-tab active" data-algorithm="fcfs" type="button"><b>FCFS</b><small>Primero en llegar</small></button>
+            <button class="algorithm-tab" data-algorithm="sjf-np" type="button"><b>SJF no exp.</b><small>Ráfaga más corta</small></button>
+            <button class="algorithm-tab" data-algorithm="sjf-p" type="button"><b>SJF exp.</b><small>Tiempo restante</small></button>
+            <button class="algorithm-tab" data-algorithm="rr" type="button"><b>Round Robin</b><small>Turnos equitativos</small></button>
+          </div>
+
+          <div class="run-card">
+            <div class="run-topline"><span id="algorithmBadge">FCFS · First Come, First Served</span><button id="simulateBtn" class="simulate-button" type="button">Simular <span>→</span></button></div>
+            <div id="emptyState" class="empty-state">
+              <div class="empty-icon">⌁</div>
+              <p>Agrega procesos y ejecuta la simulación.</p>
+            </div>
+            <div id="results" hidden>
+              <div class="gantt-header"><h3>Diagrama de Gantt</h3><span id="timeSummary">0 unidades de tiempo</span></div>
+              <div id="gantt" class="gantt" aria-label="Diagrama de Gantt por proceso"></div>
+              <div class="metrics-grid">
+                <article><span>Espera promedio</span><strong id="avgWaiting">0.00</strong><small>unidades de tiempo</small></article>
+                <article><span>Retorno promedio</span><strong id="avgTurnaround">0.00</strong><small>unidades de tiempo</small></article>
+                <article><span>Respuesta promedio</span><strong id="avgResponse">0.00</strong><small>hasta usar CPU</small></article>
+                <article><span>Uso de CPU</span><strong id="cpuUse">0%</strong><small>sin tiempo ocioso</small></article>
+              </div>
+              <div class="table-wrap"><table><thead><tr><th>Proceso</th><th>Llegada</th><th>Ráfaga</th><th>Finaliza</th><th>Respuesta</th><th>Espera</th><th>Retorno</th></tr></thead><tbody id="metricsBody"></tbody></table></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="help-section" aria-labelledby="helpTitle">
+        <div class="help-intro">
+          <p class="section-label">Guía rápida</p>
+          <h2 id="helpTitle">¿Cómo leer la simulación?</h2>
+          <p>Usa esta referencia mientras resuelves ejercicios o comparas los resultados de cada estrategia.</p>
+        </div>
+        <div class="scheduler-help-grid">
+          <article class="help-card"><span class="help-code">FCFS</span><h3>Primero en llegar</h3><p>Ejecuta los procesos en orden de llegada. Una vez iniciado, un proceso conserva el CPU hasta terminar.</p><small>No expropiativo · simple y predecible.</small></article>
+          <article class="help-card"><span class="help-code">SJF NP</span><h3>Ráfaga más corta</h3><p>Cuando el CPU queda libre, elige entre los procesos disponibles el que necesita menos tiempo de CPU.</p><small>No expropiativo · reduce la espera media.</small></article>
+          <article class="help-card"><span class="help-code">SJF EXP</span><h3>Tiempo restante más corto</h3><p>Reevalúa en cada unidad de tiempo. Un proceso nuevo puede interrumpir al actual si tiene menos trabajo restante.</p><small>Expropiativo · también se conoce como SRTF.</small></article>
+          <article class="help-card"><span class="help-code">RR</span><h3>Round Robin</h3><p>Los procesos se turnan el CPU durante un quantum. Si no terminan, vuelven al final de la cola.</p><small>Expropiativo · útil para sistemas interactivos.</small></article>
+        </div>
+        <div class="formula-panel">
+          <div><p class="section-label">Cálculos</p><h3>Tiempos por proceso</h3></div>
+          <div class="formula-grid">
+            <article><h4>Tiempo de respuesta</h4><code>Primera ejecución − Llegada</code><p>Cuánto espera antes de usar el CPU por primera vez.</p></article>
+            <article><h4>Tiempo de retorno</h4><code>Finalización − Llegada</code><p>Tiempo total que el proceso permanece en el sistema.</p></article>
+            <article><h4>Tiempo de espera</h4><code>Retorno − Ráfaga CPU</code><p>Tiempo total esperando en la cola de listos.</p></article>
+          </div>
+        </div>
+      </section>
+      <footer>Hecho para entender qué sucede dentro del CPU.</footer>
+    </main>
+    <script src="../app.js"></script>
+  </body>
+</html>
