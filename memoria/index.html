@@ -30,6 +30,18 @@
             <div class="list-caption process-caption"><span>Proceso</span><span>Memoria</span></div><div id="processList" class="item-list"></div>
           </section>
           <button class="clear-button" id="clearBtn" type="button">Limpiar todo</button>
+          <section class="exercise-generator" aria-labelledby="exerciseTitle">
+            <div><p class="section-label">Generador</p><h3 id="exerciseTitle">Nuevo ejercicio</h3><p class="generator-copy">Crea particiones y solicitudes para practicar.</p></div>
+            <div class="difficulty-buttons" aria-label="Dificultad del ejercicio"><button class="difficulty-button" data-difficulty="easy" type="button">Fácil</button><button class="difficulty-button" data-difficulty="medium" type="button">Medio</button><button class="difficulty-button" data-difficulty="hard" type="button">Difícil</button></div>
+            <form id="customExerciseForm" class="custom-exercise-form">
+              <span class="custom-title">Personalizar ejercicio</span>
+              <label>Particiones<input id="partitionCount" type="number" min="1" max="12" value="5" /></label>
+              <label>Procesos<input id="processCount" type="number" min="1" max="12" value="4" /></label>
+              <label>Partición máxima<input id="maxPartitionSize" type="number" min="10" max="2000" value="600" /></label>
+              <label>Proceso máximo<input id="maxProcessSize" type="number" min="5" max="2000" value="450" /></label>
+              <button class="custom-generate-button" type="submit">Generar personalizado</button>
+            </form>
+          </section>
         </aside>
         <section class="simulator">
           <div><p class="section-label">03 · Estrategia</p><h2>Algoritmo de asignación</h2></div>

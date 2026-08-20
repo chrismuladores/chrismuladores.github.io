@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipos de SO | Simulador de escenarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="os-types.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <nav class="page-navigation"><a class="back-link" href="../index.html">← Volver a simuladores</a></nav>
+      <header class="hero"><div class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></div><div><p class="eyebrow">Laboratorio de sistemas operativos</p><h1>Tipos de sistemas <span>operativos</span></h1></div><div class="hero-tools"><p class="hero-copy">Configura un contexto de uso y descubre qué tipo de sistema operativo responde mejor a sus necesidades.</p><button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false"><span class="theme-track"><span class="theme-knob">☼</span></span><span class="theme-label">Modo oscuro</span></button></div></header>
+      <section class="workspace">
+        <aside class="control-panel">
+          <div><p class="section-label">01 · Escenario</p><h2>¿Qué necesita el sistema?</h2><p class="panel-copy">Ajusta los parámetros y evalúa la recomendación.</p></div>
+          <form id="scenarioForm" class="scenario-form">
+            <label>Tipo de carga<select id="workload"><option value="batch">Tareas repetitivas</option><option value="interactive" selected>Usuarios interactivos</option><option value="distributed">Recursos en varios equipos</option><option value="control">Control de un dispositivo</option></select></label>
+            <label>Usuarios simultáneos <output id="usersValue">12</output><input id="users" type="range" min="1" max="100" value="12" /></label>
+            <label>Exigencia de respuesta <output id="deadlineValue">5</output><input id="deadline" type="range" min="1" max="10" value="5" /></label>
+            <label class="check-control"><input id="limitedHardware" type="checkbox" /> Hardware limitado <small>Pocos recursos, batería o memoria.</small></label>
+            <button class="simulate-button full-button" type="submit">Analizar escenario <span>→</span></button>
+          </form>
+          <div class="quick-scenarios"><p class="section-label">Escenarios rápidos</p><button data-scenario="office" type="button">Oficina multiusuario</button><button data-scenario="robot" type="button">Robot industrial</button><button data-scenario="cluster" type="button">Cluster científico</button></div>
+        </aside>
+        <section class="simulator">
+          <div class="result-topline"><div><p class="section-label">02 · Resultado</p><h2>Recomendación del escenario</h2></div><span id="recommendationBadge" class="recommendation-badge">Tiempo compartido</span></div>
+          <article id="recommendationCard" class="recommendation-card"><span id="recommendationIcon" class="recommendation-icon">◌</span><div><h3 id="recommendationTitle">Sistema de tiempo compartido</h3><p id="recommendationCopy">Distribuye el procesador entre varios usuarios y privilegia una respuesta rápida para cada interacción.</p></div></article>
+          <div class="metrics-grid"><article><span>Respuesta</span><strong id="responseMetric">Alta</strong><small>prioridad para el usuario</small></article><article><span>Rendimiento</span><strong id="throughputMetric">Medio</strong><small>trabajo completado</small></article><article><span>Previsibilidad</span><strong id="predictabilityMetric">Media</strong><small>cumplimiento de plazos</small></article></div>
+          <div class="comparison-heading"><h3>Comparar tipos de SO</h3><span>Selecciona una tarjeta para explorarla</span></div>
+          <div id="typeGrid" class="type-grid"></div>
+          <section id="typeDetail" class="type-detail"></section>
+        </section>
+      </section>
+      <section class="help-section"><div class="help-intro"><p class="section-label">Guía rápida</p><h2>Cómo interpretar el resultado</h2><p>La recomendación pondera el tipo de carga, la cantidad de usuarios, la necesidad de cumplir plazos y las limitaciones del hardware. No existe un tipo ideal para todos los casos.</p></div><div class="help-grid"><article><span>Respuesta</span><p>Qué tan rápido percibe el usuario o dispositivo que el sistema reacciona.</p></article><article><span>Rendimiento</span><p>Cuánto trabajo puede completar el sistema en un período de tiempo.</p></article><article><span>Previsibilidad</span><p>Qué tan confiable es que una tarea se complete dentro de su plazo.</p></article></div></section>
+      <footer>Hecho para relacionar cada necesidad con el tipo de sistema operativo adecuado.</footer>
+    </main>
+    <script src="os-types.js"></script>
+  </body>
+</html>

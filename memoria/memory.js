@@ -33,6 +33,17 @@ $('.control-panel').addEventListener('click',event=>{const button=event.target.c
 $('#partitionExample').addEventListener('click',()=>{partitions=[{id:1,size:100},{id:2,size:500},{id:3,size:200},{id:4,size:300},{id:5,size:600}];renderLists();resetResults();});
 $('#processExample').addEventListener('click',()=>{processes=[{id:1,name:'P1',size:212},{id:2,name:'P2',size:417},{id:3,name:'P3',size:112},{id:4,name:'P4',size:426}];renderLists();resetResults();});
 $('#clearBtn').addEventListener('click',()=>{partitions=[];processes=[];renderLists();resetResults();});
+function randomInteger(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+function generateExercise({partitionCount,processCount,maxPartitionSize,maxProcessSize}){
+  const partitionMin=Math.max(10,Math.round(maxPartitionSize*.25));
+  const processMin=Math.max(5,Math.round(maxProcessSize*.2));
+  partitions=Array.from({length:partitionCount},(_,index)=>({id:index+1,size:randomInteger(partitionMin,maxPartitionSize)}));
+  processes=Array.from({length:processCount},(_,index)=>({id:index+1,name:`P${index+1}`,size:randomInteger(processMin,maxProcessSize)}));
+  $('#nameInput').value=`P${processCount+1}`;renderLists();resetResults();
+}
+const difficulties={easy:{partitionCount:3,processCount:3,maxPartitionSize:300,maxProcessSize:180},medium:{partitionCount:5,processCount:5,maxPartitionSize:650,maxProcessSize:480},hard:{partitionCount:8,processCount:9,maxPartitionSize:1200,maxProcessSize:1050}};
+document.querySelectorAll('.difficulty-button').forEach(button=>button.addEventListener('click',()=>generateExercise(difficulties[button.dataset.difficulty])));
+$('#customExerciseForm').addEventListener('submit',event=>{event.preventDefault();const number=(selector,min,max)=>Math.max(min,Math.min(max,Number($(selector).value)||min));generateExercise({partitionCount:number('#partitionCount',1,12),processCount:number('#processCount',1,12),maxPartitionSize:number('#maxPartitionSize',10,2000),maxProcessSize:number('#maxProcessSize',5,2000)});});
 document.querySelectorAll('.algorithm-tab').forEach(button=>button.addEventListener('click',()=>{algorithm=button.dataset.algorithm;document.querySelectorAll('.algorithm-tab').forEach(item=>item.classList.toggle('active',item===button));$('#algorithmBadge').textContent=names[algorithm];}));
 function setTheme(theme){const dark=theme==='dark';document.documentElement.dataset.theme=theme;$('#themeToggle').setAttribute('aria-checked',String(dark));$('.theme-label').textContent=dark?'Modo claro':'Modo oscuro';$('.theme-knob').textContent=dark?'☾':'☼';localStorage.setItem('memory-theme',theme);}
 $('#themeToggle').addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));setTheme(localStorage.getItem('memory-theme')||'light');$('#simulateBtn').addEventListener('click',simulate);renderLists();
