@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memoria | Simulador de asignación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="memory.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <nav class="page-navigation"><a class="back-link" href="../index.html">← Volver a simuladores</a></nav>
+      <header class="hero">
+        <div class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div><p class="eyebrow">Laboratorio de sistemas operativos</p><h1>Gestión de <span>memoria</span></h1></div>
+        <div class="hero-tools"><p class="hero-copy">Asigna procesos a particiones y compara el desperdicio de memoria de cada estrategia.</p><button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false"><span class="theme-track"><span class="theme-knob">☼</span></span><span class="theme-label">Modo oscuro</span></button></div>
+      </header>
+      <section class="workspace">
+        <aside class="control-panel">
+          <section class="entry-section">
+            <div class="panel-heading"><div><p class="section-label">01 · Espacio disponible</p><h2>Particiones</h2></div><button class="text-button" id="partitionExample" type="button">Cargar ejemplo</button></div>
+            <form id="partitionForm" class="entry-form compact"><label>Tamaño (MB)<input id="partitionSize" type="number" min="1" value="180" /></label><button class="add-button" type="submit"><span>+</span> Agregar</button></form>
+            <div class="list-caption partitions-caption"><span>Partición</span><span>Capacidad</span></div><div id="partitionList" class="item-list"></div>
+          </section>
+          <section class="entry-section process-section">
+            <div class="panel-heading"><div><p class="section-label">02 · Solicitudes</p><h2>Procesos</h2></div><button class="text-button" id="processExample" type="button">Cargar ejemplo</button></div>
+            <form id="processForm" class="entry-form"><label>Nombre<input id="nameInput" maxlength="8" value="P1" autocomplete="off" /></label><label>Memoria (MB)<input id="processSize" type="number" min="1" value="120" /></label><button class="add-button" type="submit"><span>+</span> Agregar proceso</button></form>
+            <div class="list-caption process-caption"><span>Proceso</span><span>Memoria</span></div><div id="processList" class="item-list"></div>
+          </section>
+          <button class="clear-button" id="clearBtn" type="button">Limpiar todo</button>
+        </aside>
+        <section class="simulator">
+          <div><p class="section-label">03 · Estrategia</p><h2>Algoritmo de asignación</h2></div>
+          <div class="algorithm-tabs" role="tablist" aria-label="Algoritmos de memoria">
+            <button class="algorithm-tab active" data-algorithm="first" type="button"><b>First Fit</b><small>Primera partición que alcanza</small></button>
+            <button class="algorithm-tab" data-algorithm="best" type="button"><b>Best Fit</b><small>Menor partición suficiente</small></button>
+            <button class="algorithm-tab" data-algorithm="worst" type="button"><b>Worst Fit</b><small>Mayor partición disponible</small></button>
+          </div>
+          <div class="run-card">
+            <div class="run-topline"><span id="algorithmBadge">FIRST FIT · Primera partición suficiente</span><button id="simulateBtn" class="simulate-button" type="button">Asignar memoria <span>→</span></button></div>
+            <div id="emptyState" class="empty-state"><div class="empty-icon">▤</div><p>Agrega particiones y procesos para iniciar.</p></div>
+            <div id="results" hidden>
+              <div class="memory-header"><h3>Mapa de memoria</h3><span id="memorySummary">0 MB disponibles</span></div>
+              <div id="memoryMap" class="memory-map" aria-label="Mapa de memoria por particiones"></div>
+              <div class="legend"><span><i class="used-dot"></i>Proceso asignado</span><span><i class="free-dot"></i>Partición libre</span><span><i class="fragment-dot"></i>Fragmentación interna</span></div>
+              <div class="metrics-grid"><article><span>Memoria utilizada</span><strong id="memoryUsed">0 MB</strong><small>por procesos asignados</small></article><article><span>Fragmentación interna</span><strong id="fragmentation">0 MB</strong><small>espacio sin usar dentro de particiones</small></article><article><span>Procesos asignados</span><strong id="assignedCount">0/0</strong><small>solicitudes atendidas</small></article><article><span>Particiones libres</span><strong id="freeCount">0</strong><small>sin proceso asignado</small></article></div>
+              <div class="table-wrap"><table><thead><tr><th>Proceso</th><th>Solicita</th><th>Partición</th><th>Capacidad</th><th>Fragmentación</th><th>Estado</th></tr></thead><tbody id="resultsBody"></tbody></table></div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section class="help-section"><div class="help-intro"><p class="section-label">Guía rápida</p><h2>Asignación por particiones</h2><p>Cada partición puede alojar un proceso. El espacio sobrante dentro de una partición asignada es fragmentación interna.</p></div><div class="help-grid"><article><span>First Fit</span><p>Recorre las particiones en orden y usa la primera con capacidad suficiente.</p></article><article><span>Best Fit</span><p>Elige la partición más pequeña que pueda alojar el proceso.</p></article><article><span>Worst Fit</span><p>Elige la partición más grande disponible.</p></article></div></section>
+      <footer>Hecho para entender cómo se administra la memoria.</footer>
+    </main>
+    <script src="memory.js"></script>
+  </body>
+</html>
