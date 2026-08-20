@@ -130,6 +130,10 @@
             <article><h4>Tiempo de espera</h4><code>Retorno − Ráfaga CPU</code><p>Tiempo total esperando en la cola de listos.</p></article>
           </div>
         </div>
+        <details class="study-details">
+          <summary>Profundizar: conceptos de planificación</summary>
+          <div class="scheduler-help-grid"><article class="help-card"><span class="help-code">EXPROP.</span><h3>¿Cuándo se interrumpe?</h3><p>Un algoritmo expropiativo puede quitar el CPU a un proceso en ejecución. SJF expropiativo lo hace si llega otro proceso con menor tiempo restante; Round Robin lo hace al terminar el quantum.</p></article><article class="help-card"><span class="help-code">INANICIÓN</span><h3>Procesos postergados</h3><p>SJF puede retrasar mucho procesos largos si siguen llegando trabajos cortos. A este riesgo se le llama inanición.</p></article><article class="help-card"><span class="help-code">QUANTUM</span><h3>Equilibrio en RR</h3><p>Un quantum muy corto mejora la respuesta, pero produce más cambios de contexto. Uno muy largo hace que Round Robin se parezca a FCFS.</p></article><article class="help-card"><span class="help-code">CPU</span><h3>Uso del procesador</h3><p>Los espacios vacíos del Gantt representan tiempo ocioso: no hay procesos que hayan llegado y estén listos para ejecutarse.</p></article></div>
+        </details>
       </section>
       <footer>Hecho para entender qué sucede dentro del CPU.</footer>
     </main>

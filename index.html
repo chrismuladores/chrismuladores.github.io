@@ -8,12 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="landing.css" />
+    <link rel="stylesheet" href="landing-theme.css" />
   </head>
   <body>
     <main class="site-shell">
       <header class="site-header">
         <a class="site-brand" href="index.html"><span class="brand-mark"><i></i><i></i><i></i></span> SO Lab</a>
-        <span class="header-caption">Colección de simuladores</span>
+        <div class="header-actions"><span class="header-caption">Colección de simuladores</span><button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false"><span class="theme-track"><span class="theme-knob">☼</span></span><span class="theme-label">Modo oscuro</span></button></div>
       </header>
       <section class="intro">
         <p class="eyebrow">Sistemas operativos, sin misterio</p>
@@ -21,7 +22,7 @@
         <p>Elige un simulador interactivo para experimentar con los conceptos fundamentales de sistemas operativos.</p>
       </section>
       <section aria-labelledby="simulatorTitle">
-        <div class="section-heading"><div><p class="eyebrow">Herramientas disponibles</p><h2 id="simulatorTitle">Simuladores</h2></div><span>03 disponibles</span></div>
+        <div class="section-heading"><div><p class="eyebrow">Herramientas disponibles</p><h2 id="simulatorTitle">Simuladores</h2></div><span>04 disponibles</span></div>
         <div class="simulator-grid">
           <a class="simulator-card available" href="planificador/index.html">
             <span class="card-icon planning-icon" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -36,15 +37,19 @@
           <article class="simulator-card coming-soon">
             <span class="card-icon terminal-icon" aria-hidden="true">›_</span><span class="card-status">Próximamente</span><h3>Línea de comandos Windows</h3><p>Practica comandos de Windows y comprende cómo funciona una terminal.</p>
           </article>
-          <article class="simulator-card coming-soon">
-            <span class="card-icon filesystem-icon" aria-hidden="true">▤</span><span class="card-status">Próximamente</span><h3>Sistema de archivos</h3><p>Explora directorios, bloques, permisos y estrategias de organización de archivos.</p>
-          </article>
+          <a class="simulator-card available" href="archivos/index.html">
+            <span class="card-icon filesystem-icon" aria-hidden="true">▤</span><span class="card-status">Disponible</span><h3>Sistema de archivos</h3><p>Compara asignación contigua, enlazada e indexada en un disco visual.</p><span class="card-action">Abrir simulador <b>→</b></span>
+          </a>
           <a class="simulator-card available" href="tipos-so/index.html">
             <span class="card-icon os-icon" aria-hidden="true">◈</span><span class="card-status">Disponible</span><h3>Tipos de sistemas operativos</h3><p>Define un escenario y compara qué sistema operativo se adapta mejor.</p><span class="card-action">Abrir simulador <b>→</b></span>
           </a>
+          <article class="simulator-card coming-soon">
+            <span class="card-icon batch-icon" aria-hidden="true">›_</span><span class="card-status">Próximamente</span><h3>Batch Windows</h3><p>Practica automatización y secuencias de comandos en archivos por lotes.</p>
+          </article>
         </div>
       </section>
       <footer>SO Lab · Una colección para practicar y comprender.</footer>
     </main>
+    <script src="landing.js"></script>
   </body>
 </html>
