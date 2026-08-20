@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMD Windows | Consola virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="cmd.css" />
+    <style>.terminal-labels{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}.terminal-labels #terminalTitle{padding:5px 7px;border-radius:4px;background:#edf1f6;color:#65738a;font-family:'DM Mono',monospace;font-size:9px}@media(max-width:520px){.terminal-labels{justify-content:flex-start}}</style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <nav class="page-navigation"><a class="back-link" href="../index.html">← Volver a simuladores</a></nav>
+      <header class="hero"><div class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></div><div><p class="eyebrow">Laboratorio de sistemas operativos</p><h1>Línea de comandos <span>Windows</span></h1></div><div class="hero-tools"><p class="hero-copy">Practica con una versión segura de CMD. Sus carpetas y archivos existen solamente dentro de este simulador.</p><button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false"><span class="theme-track"><span class="theme-knob">☼</span></span><span class="theme-label">Modo oscuro</span></button></div></header>
+      <section class="workspace">
+        <aside class="control-panel"><div><p class="section-label">Explorador virtual</p><h2>Este equipo</h2><p class="panel-copy">La estructura se actualiza al crear, copiar o eliminar elementos desde CMD.</p></div><div id="tree" class="tree" aria-label="Estructura de carpetas virtual"></div><button id="resetBtn" class="reset-button" type="button">Restablecer entorno</button><section class="command-help"><p class="section-label">Comandos iniciales</p><div><code>dir</code><code>cd</code><code>mkdir</code><code>type</code><code>echo</code><code>set</code><code>copy</code><code>del</code><code>tree</code><code>cls</code><code>help</code></div></section></aside>
+        <section class="simulator"><div class="terminal-top"><div><p class="section-label">CMD virtual</p><h2 id="currentPath">C:\Users\Alumno</h2></div><div class="terminal-labels"><span id="terminalTitle">Administrador: CMD virtual</span><span class="terminal-badge">Windows CMD</span></div></div><div id="terminalOutput" class="terminal-output" aria-live="polite"></div><form id="commandForm" class="command-form"><label id="promptLabel" for="commandInput">C:\Users\Alumno&gt;</label><input id="commandInput" autocomplete="off" spellcheck="false" aria-label="Escribe un comando de CMD" autofocus /></form><div class="terminal-actions"><button data-command="help" type="button">Ver ayuda</button><button data-command="dir" type="button">Listar carpeta</button><button data-command="tree" type="button">Ver árbol</button><button data-command="cls" type="button">Limpiar</button></div></section>
+      </section>
+      <section class="help-section"><div class="help-intro"><p class="section-label">Guía de estudio</p><h2>¿Qué es CMD?</h2><p>CMD, o Símbolo del sistema, es un intérprete de comandos de Windows. Permite administrar archivos, navegar por carpetas y automatizar tareas escribiendo instrucciones de texto.</p></div><div class="help-grid"><article><span>Prompt</span><p>Indica la carpeta actual. El comando que escribas se ejecuta dentro de esa ubicación.</p></article><article><span>Rutas</span><p>Usa <code>cd carpeta</code> para entrar, <code>cd ..</code> para volver y <code>cd \</code> para ir a la raíz de la unidad.</p></article><article><span>Ayuda</span><p>Escribe <code>help</code> para ver los comandos iniciales disponibles en este entorno.</p></article></div><details class="study-details"><summary>Profundizar: cómo leer comandos</summary><div class="help-grid"><article><span>Comando y argumentos</span><p>La primera palabra define la acción. Las siguientes son argumentos, por ejemplo <code>mkdir proyectos</code>.</p></article><article><span>Estado del entorno</span><p>Los cambios realizados aquí permanecen mientras no restablezcas el entorno, igual que en una sesión normal de consola.</p></article><article><span>Seguridad</span><p>La consola es completamente virtual: comandos de borrado o copia sólo afectan a sus archivos simulados.</p></article></div></details></section>
+      <footer>Hecho para aprender CMD de Windows paso a paso.</footer>
+    </main>
+    <script src="cmd.js"></script>
+  </body>
+</html>
