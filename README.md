@@ -1,4 +1,6 @@
-# SimulaLab
+# Chrismuladores
+
+<img src="assets/chrismuladores-logo.svg" alt="Logo de Chrismuladores" width="72" />
 
 Laboratorio interactivo para aprender informática mediante simuladores visuales y ejercicios prácticos.
 
