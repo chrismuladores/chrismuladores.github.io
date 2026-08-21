@@ -15,7 +15,7 @@ function setTheme(theme) {
   $('#themeToggle').setAttribute('aria-label', isDark ? 'Activar modo claro' : 'Activar modo oscuro');
   $('#themeToggle').querySelector('.theme-label').textContent = isDark ? 'Modo claro' : 'Modo oscuro';
   $('#themeToggle').querySelector('.theme-knob').textContent = isDark ? '☾' : '☼';
-  localStorage.setItem('scheduler-theme', theme);
+  localStorage.setItem('chrismuladores-theme', theme);
 }
 
 function renderList() {
@@ -52,7 +52,8 @@ function renderResults(jobs,slices,total) {
     const arrival = `<span class="gantt-arrival" aria-label="${escapeHtml(job.name)} llega en el tiempo ${job.arrival}" title="Llegada de ${escapeHtml(job.name)}: t = ${job.arrival}" style="grid-column:${job.arrival + 1}; --arrival-color:${colorMap[job.id]}"></span>`;
     return `<div class="gantt-row"><span class="gantt-process-label"><i style="background:${colorMap[job.id]}"></i>${escapeHtml(job.name)} <b class="arrival-chip" style="--arrival-color:${colorMap[job.id]}">L:${job.arrival}</b></span><div class="gantt-lane" style="--units:${total}">${arrival}${runs}</div></div>`;
   }).join('');
-  $('#gantt').innerHTML = `<div class="gantt-chart" style="--units:${total}"><div class="gantt-axis"><span class="axis-title">TIEMPO</span><div class="time-scale">${timeLabels}</div></div>${lanes}</div>`;
+  const mobileTimeline = slices.map(slice => { const color = slice.id === 'idle' ? '#d7dee8' : colorMap[slice.id]; return `<article class="mobile-slice"><span class="mobile-time">${slice.start}<i></i>${slice.end}</span><div style="--slice-color:${color}"><b>${escapeHtml(slice.name)}</b><small>${slice.end - slice.start} unidad${slice.end - slice.start === 1 ? '' : 'es'} de CPU</small></div></article>`; }).join('');
+  $('#gantt').innerHTML = `<div class="gantt-chart desktop-schedule" style="--units:${total}"><div class="gantt-axis"><span class="axis-title">TIEMPO</span><div class="time-scale">${timeLabels}</div></div>${lanes}</div><div class="mobile-schedule" aria-label="Cronograma vertical de ejecución">${mobileTimeline}</div>`;
   $('#metricsBody').innerHTML=jobs.sort((a,b)=>a.id-b.id).map(j=>`<tr><td>${escapeHtml(j.name)}</td><td>${j.arrival}</td><td>${j.burst}</td><td>${j.finish}</td><td>${j.firstStart-j.arrival}</td><td>${j.finish-j.arrival-j.burst}</td><td>${j.finish-j.arrival}</td></tr>`).join('');
 }
 $('#processForm').addEventListener('submit', e=>{e.preventDefault();const name=$('#nameInput').value.trim()||`P${processes.length+1}`,arrival=Number($('#arrivalInput').value),burst=Number($('#burstInput').value);if(arrival<0||burst<1||!Number.isFinite(arrival)||!Number.isFinite(burst))return;processes.push({id:Date.now(),name,arrival,burst});$('#nameInput').value=`P${processes.length+1}`;$('#arrivalInput').value=0;$('#burstInput').value=1;renderList();});
@@ -84,5 +85,5 @@ $('#customExerciseForm').addEventListener('submit', event => {
 });
 $('#themeToggle').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 document.querySelectorAll('.algorithm-tab').forEach(btn=>btn.addEventListener('click',()=>{algorithm=btn.dataset.algorithm;document.querySelectorAll('.algorithm-tab').forEach(b=>b.classList.toggle('active',b===btn));$('#algorithmBadge').textContent=algorithmNames[algorithm];$('#quantumControl').style.display=algorithm==='rr'?'grid':'none';}));
-setTheme(localStorage.getItem('scheduler-theme') || 'light');
+setTheme(localStorage.getItem('chrismuladores-theme') || 'light');
 $('#simulateBtn').addEventListener('click',simulate);renderList();

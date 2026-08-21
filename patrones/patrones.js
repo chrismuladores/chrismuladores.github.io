@@ -35,8 +35,7 @@ function catalog() {
 $('#advisor-form').addEventListener('submit', event => { event.preventDefault(); render({ problem: $('#problem').value, participants: $('#participants').value, legacy: $('#legacy').value, evolution: $('#evolution').value }); });
 $('#example').addEventListener('click', () => { $('#problem').value = 'interface'; $('#participants').value = 'many'; $('#legacy').value = 'yes'; $('#evolution').value = 'yes'; $('#advisor-form').requestSubmit(); });
 
-const toggle = $('#theme-toggle');
-toggle.checked = localStorage.getItem('patterns-theme') === 'dark';
-document.body.classList.toggle('dark', toggle.checked);
-toggle.addEventListener('change', () => { document.body.classList.toggle('dark', toggle.checked); localStorage.setItem('patterns-theme', toggle.checked ? 'dark' : 'light'); });
+function setTheme(theme) { const dark = theme === 'dark'; document.documentElement.dataset.theme = theme; $('#themeToggle').setAttribute('aria-checked', String(dark)); $('.theme-label').textContent = dark ? 'Modo claro' : 'Modo oscuro'; $('.theme-knob').textContent = dark ? '☾' : '☼'; localStorage.setItem('chrismuladores-theme', theme); }
+$('#themeToggle').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
+setTheme(localStorage.getItem('chrismuladores-theme') || 'light');
 catalog();
