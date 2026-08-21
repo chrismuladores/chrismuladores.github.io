@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrones de diseño | Chrismuladores</title>
+  <link rel="icon" href="../assets/chrismuladores-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../theme-toggle.css">
+  <link rel="stylesheet" href="../brand.css">
+  <link rel="stylesheet" href="patrones.css">
+</head>
+<body>
+  <nav class="topbar"><a class="back-link" href="../index.html">Volver al inicio</a><span>Ingeniería de software</span></nav>
+  <main>
+    <header class="hero">
+      <div><p class="eyebrow">Simulador interactivo</p><h1>Patrones de diseño</h1><p>Analizá un problema de diseño, recibí alternativas justificadas y estudiá cuándo conviene aplicar cada patrón.</p></div>
+      <label class="theme-control" title="Cambiar modo de color"><input id="theme-toggle" type="checkbox"><span class="theme-slider"></span><span class="theme-label">Modo oscuro</span></label>
+    </header>
+
+    <section class="workspace" aria-label="Asistente de selección de patrones">
+      <form id="advisor-form" class="panel advisor">
+        <div class="panel-heading"><span class="step">1</span><div><h2>Describí el problema</h2><p>Elegí la preocupación principal de tu diseño.</p></div></div>
+        <label>¿Qué necesitás resolver?
+          <select id="problem" required>
+            <option value="algorithm">Poder intercambiar un algoritmo o comportamiento</option>
+            <option value="creation">Crear familias de objetos sin acoplarse a clases concretas</option>
+            <option value="notifications">Notificar cambios a varios componentes</option>
+            <option value="interface">Integrar una interfaz o sistema existente incompatible</option>
+            <option value="actions">Representar acciones, colas o deshacer operaciones</option>
+            <option value="architecture">Separar interfaz, estado y reglas de presentación</option>
+          </select>
+        </label>
+        <label>Participantes involucrados
+          <select id="participants"><option value="few">Uno o pocos componentes</option><option value="many">Varios componentes deben colaborar</option></select>
+        </label>
+        <label>¿Hay código externo o legado que no podés modificar?
+          <select id="legacy"><option value="no">No</option><option value="yes">Sí</option></select>
+        </label>
+        <label>¿Querés facilitar pruebas o cambios futuros?
+          <select id="evolution"><option value="yes">Sí, es importante</option><option value="no">No es la prioridad</option></select>
+        </label>
+        <div class="actions"><button type="submit">Analizar diseño</button><button id="example" class="secondary" type="button">Cargar ejemplo</button></div>
+      </form>
+
+      <section class="panel result" aria-live="polite">
+        <div class="panel-heading"><span class="step">2</span><div><h2>Alternativas recomendadas</h2><p>La elección final depende del contexto y de las restricciones reales.</p></div></div>
+        <div id="recommendation" class="recommendation"><p>Completá el análisis para obtener una recomendación razonada.</p></div>
+      </section>
+    </section>
+
+    <section class="study"><div class="section-title"><p class="eyebrow">Guía de estudio</p><h2>Catálogo esencial</h2><p>Los patrones son soluciones reutilizables a problemas recurrentes; no son recetas obligatorias.</p></div><div id="catalog" class="catalog"></div></section>
+  </main>
+  <script src="patrones.js"></script>
+</body>
+</html>
