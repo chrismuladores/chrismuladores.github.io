@@ -4,12 +4,15 @@
   document.documentElement.dataset.theme = theme;
 
   const modules = {
-    planificador: ['SYS-001', 'INTERMEDIATE', 'Planificación de procesos'], memoria: ['SYS-002', 'INTERMEDIATE', 'Gestión de memoria'], archivos: ['SYS-003', 'INTERMEDIATE', 'Sistema de archivos'],
-    'tipos-so': ['SYS-004', 'BASIC', 'Tipos de sistemas operativos'], 'cmd-windows': ['SYS-005', 'INTERMEDIATE', 'Línea de comandos Windows'], 'batch-windows': ['SYS-006', 'ADVANCED', 'Batch Windows'],
-    esre: ['SWE-001', 'ADVANCED', 'Documento ESRE'], gantt: ['SWE-002', 'INTERMEDIATE', 'Diagrama de Gantt'], metodologias: ['SWE-003', 'BASIC', 'Metodologías ágiles y tradicionales'],
-    pert: ['SWE-004', 'ADVANCED', 'Grafo PERT'], tablero: ['SWE-005', 'INTERMEDIATE', 'Tablero Scrum / Kanban'], estimacion: ['SWE-006', 'INTERMEDIATE', 'Estimación ágil'],
-    pruebas: ['SWE-007', 'INTERMEDIATE', 'Pruebas de software'], git: ['SWE-008', 'INTERMEDIATE', 'Control de versiones con Git'], patrones: ['SWE-009', 'ADVANCED', 'Patrones de diseño'],
-    relevamiento: ['SWE-010', 'INTERMEDIATE', 'Técnicas de relevamiento'], decisiones: ['SWE-011', 'INTERMEDIATE', 'Toma de decisiones'], 'frontend-html': ['FRT-001', 'BASIC', 'Estructura HTML y semántica']
+    planificador: ['SYS-001', 'INTERMEDIATE', 'Planificación de procesos'], memoria: ['SYS-002', 'INTERMEDIATE', 'Gestión de memoria'],
+    'tipos-so': ['SYS-004', 'BASIC', 'Tipos de sistemas operativos'], archivos: ['SYS-003', 'INTERMEDIATE', 'Sistema de archivos'],
+    'cmd-windows': ['SYS-005', 'INTERMEDIATE', 'Línea de comandos Windows'], 'batch-windows': ['SYS-006', 'ADVANCED', 'Batch Windows'],
+    relevamiento: ['SWE-010', 'INTERMEDIATE', 'Técnicas de relevamiento'], esre: ['SWE-001', 'ADVANCED', 'Documento ESRE'],
+    metodologias: ['SWE-003', 'BASIC', 'Metodologías ágiles y tradicionales'], decisiones: ['SWE-011', 'INTERMEDIATE', 'Toma de decisiones'],
+    gantt: ['SWE-002', 'INTERMEDIATE', 'Diagrama de Gantt'], pert: ['SWE-004', 'ADVANCED', 'Grafo PERT'],
+    tablero: ['SWE-005', 'INTERMEDIATE', 'Tablero Scrum / Kanban'], estimacion: ['SWE-006', 'INTERMEDIATE', 'Estimación ágil'],
+    patrones: ['SWE-009', 'ADVANCED', 'Patrones de diseño'], pruebas: ['SWE-007', 'INTERMEDIATE', 'Pruebas de software'],
+    git: ['SWE-008', 'INTERMEDIATE', 'Control de versiones con Git'], 'frontend-html': ['FRT-001', 'BASIC', 'Estructura HTML y semántica']
   };
   const segments = location.pathname.split('/').filter(Boolean);
   const folder = segments.at(-1)?.includes('.') ? (segments.at(-2) || '') : (segments.at(-1) || '');
