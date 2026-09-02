@@ -1,0 +1,677 @@
+{
+  "designSystem": {
+    "name": "Tech Simulation Lab",
+    "version": "1.0.0",
+
+    "identity": {
+      "concept": "technical-laboratory",
+      "description": "Interfaz inspirada en laboratorios de informática, estaciones de trabajo técnicas, documentación de ingeniería y paneles de diagnóstico.",
+      "keywords": [
+        "technical",
+        "laboratory",
+        "engineering",
+        "simulation",
+        "education",
+        "documentation",
+        "terminal",
+        "systems"
+      ],
+      "avoid": [
+        "generic-ai-landing-page",
+        "purple-blue-gradients",
+        "glassmorphism-heavy",
+        "oversized-rounded-cards",
+        "random-emoji-icons",
+        "excessive-shadows",
+        "marketing-style-copy",
+        "floating-3d-elements"
+      ]
+    },
+
+    "theme": {
+      "default": "dark",
+      "allowThemeSwitch": true,
+
+      "dark": {
+        "background": "#0C0E11",
+        "surface": "#13161B",
+        "surfaceSecondary": "#191D23",
+        "surfaceElevated": "#20252C",
+
+        "border": "#30363D",
+        "borderStrong": "#4A525C",
+
+        "textPrimary": "#E6E9ED",
+        "textSecondary": "#A9B0BA",
+        "textMuted": "#707985",
+
+        "accent": "#72E0A0",
+        "accentSoft": "#193829",
+
+        "warning": "#E8B95A",
+        "danger": "#E36D6D",
+        "success": "#72E0A0",
+        "info": "#70A5EB"
+      },
+
+      "light": {
+        "background": "#F4F5F3",
+        "surface": "#FFFFFF",
+        "surfaceSecondary": "#ECEEEC",
+        "surfaceElevated": "#FFFFFF",
+
+        "border": "#D2D6D3",
+        "borderStrong": "#AEB5B0",
+
+        "textPrimary": "#1B1E20",
+        "textSecondary": "#51585D",
+        "textMuted": "#777E82",
+
+        "accent": "#167A45",
+        "accentSoft": "#DDEFE4",
+
+        "warning": "#996914",
+        "danger": "#B83B3B",
+        "success": "#167A45",
+        "info": "#326AA8"
+      }
+    },
+
+    "typography": {
+      "primary": {
+        "family": "IBM Plex Sans",
+        "fallback": "Arial, sans-serif",
+        "usage": [
+          "body",
+          "headings",
+          "navigation",
+          "buttons"
+        ]
+      },
+
+      "mono": {
+        "family": "IBM Plex Mono",
+        "fallback": "Consolas, monospace",
+        "usage": [
+          "metadata",
+          "code",
+          "status",
+          "labels",
+          "simulation-output",
+          "technical-identifiers"
+        ]
+      },
+
+      "scale": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.375rem",
+        "2xl": "1.75rem",
+        "3xl": "2.25rem",
+        "4xl": "3rem"
+      },
+
+      "weights": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+
+      "rules": {
+        "bodyLineHeight": 1.6,
+        "headingLineHeight": 1.15,
+        "uppercaseTechnicalLabels": true,
+        "maxParagraphWidth": "72ch"
+      }
+    },
+
+    "layout": {
+      "maxWidth": "1440px",
+      "contentWidth": "1180px",
+      "articleWidth": "900px",
+
+      "headerHeight": "64px",
+
+      "spacing": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px",
+        "3xl": "64px",
+        "4xl": "96px"
+      },
+
+      "grid": {
+        "columnsDesktop": 12,
+        "columnsTablet": 8,
+        "columnsMobile": 4,
+        "gap": "24px"
+      },
+
+      "breakpoints": {
+        "mobile": "480px",
+        "tablet": "768px",
+        "desktop": "1024px",
+        "wide": "1440px"
+      }
+    },
+
+    "shape": {
+      "borderRadius": {
+        "small": "3px",
+        "default": "5px",
+        "large": "8px"
+      },
+
+      "rule": "Avoid excessive rounded corners. Technical panels should appear structured rather than soft."
+    },
+
+    "borders": {
+      "default": "1px solid",
+      "technical": "1px solid",
+      "section": "2px solid"
+    },
+
+    "shadows": {
+      "default": "0 2px 8px rgba(0,0,0,0.18)",
+      "elevated": "0 8px 24px rgba(0,0,0,0.22)",
+      "usage": "Use sparingly. Prefer borders and contrast between surfaces."
+    },
+
+    "navigation": {
+      "style": "technical-index",
+
+      "logoFormat": "symbol + site-name",
+
+      "desktopItems": [
+        "Simuladores",
+        "Áreas",
+        "Documentación",
+        "Acerca de"
+      ],
+
+      "itemFormat": "NN / LABEL",
+
+      "examples": [
+        "01 / SIMULADORES",
+        "02 / ÁREAS",
+        "03 / DOCUMENTACIÓN",
+        "04 / ACERCA DE"
+      ],
+
+      "activeIndicator": "left-line-and-accent-text"
+    },
+
+    "homepage": {
+      "hero": {
+        "style": "technical-console",
+
+        "eyebrow": "SIMULATION NODE / ONLINE",
+
+        "titleStyle": "large-clean-heading",
+
+        "descriptionStyle": "technical-direct",
+
+        "metadata": [
+          "simulators-count",
+          "areas-count",
+          "last-update"
+        ],
+
+        "showStatusIndicator": true
+      },
+
+      "mainSections": [
+        "featuredSimulators",
+        "areas",
+        "recentlyUpdated",
+        "aboutPlatform"
+      ]
+    },
+
+    "areaSystem": {
+      "rule": "The global visual language remains unchanged. Each academic area receives only one accent color, identifier and optional icon.",
+
+      "areas": {
+        "operatingSystems": {
+          "id": "SYS",
+          "name": "Sistemas Operativos",
+          "accent": "#72E0A0",
+          "icon": "terminal",
+          "description": "Procesos, servicios, permisos, usuarios, sistemas de archivos y administración."
+        },
+
+        "softwareEngineering": {
+          "id": "SWE",
+          "name": "Ingeniería de Software",
+          "accent": "#CE8BFF",
+          "icon": "diagram",
+          "description": "Requerimientos, UML, planificación, testing y documentación."
+        },
+
+        "frontend": {
+          "id": "FRT",
+          "name": "Frontend",
+          "accent": "#57C7FF",
+          "icon": "browser",
+          "description": "HTML, CSS, JavaScript, interfaces y experiencia de usuario."
+        },
+
+        "backend": {
+          "id": "BCK",
+          "name": "Backend",
+          "accent": "#FFB454",
+          "icon": "server",
+          "description": "APIs, lógica de negocio, PHP, Laravel y servicios."
+        },
+
+        "databases": {
+          "id": "DB",
+          "name": "Bases de Datos",
+          "accent": "#D7C65C",
+          "icon": "database",
+          "description": "Modelado, SQL, consultas, normalización y persistencia."
+        },
+
+        "networking": {
+          "id": "NET",
+          "name": "Redes",
+          "accent": "#5FA8FF",
+          "icon": "network",
+          "description": "Direccionamiento, protocolos, routing, switching y diagnóstico."
+        },
+
+        "cybersecurity": {
+          "id": "SEC",
+          "name": "Ciberseguridad",
+          "accent": "#FF6B6B",
+          "icon": "shield",
+          "description": "Seguridad, amenazas, vulnerabilidades, controles y defensa."
+        },
+
+        "testing": {
+          "id": "TST",
+          "name": "Testing",
+          "accent": "#62D6C5",
+          "icon": "checklist",
+          "description": "Casos de prueba, defectos, regresión, automatización y calidad."
+        },
+
+        "projectManagement": {
+          "id": "PM",
+          "name": "Gestión de Proyectos",
+          "accent": "#E8B95A",
+          "icon": "timeline",
+          "description": "Planificación, riesgos, cronogramas, estimaciones y seguimiento."
+        }
+      }
+    },
+
+    "simulatorCards": {
+      "style": "technical-module",
+
+      "structure": [
+        "identifier",
+        "area",
+        "title",
+        "description",
+        "difficulty",
+        "status",
+        "launchAction"
+      ],
+
+      "example": {
+        "identifier": "SYS-004",
+        "status": "ONLINE",
+        "title": "Simulador de permisos Linux",
+        "difficulty": "INTERMEDIATE"
+      },
+
+      "visualRules": {
+        "borderRadius": "5px",
+        "showAreaAccent": true,
+        "accentPlacement": "top-border",
+        "useGradient": false,
+        "hover": "border-highlight",
+        "iconSize": "24px",
+        "avoidIllustrations": true
+      }
+    },
+
+    "simulatorInterface": {
+      "layout": {
+        "desktop": "instructions-left-simulator-right",
+        "mobile": "stacked"
+      },
+
+      "header": {
+        "showIdentifier": true,
+        "showArea": true,
+        "showDifficulty": true,
+        "showStatus": true
+      },
+
+      "workspace": {
+        "background": "surface",
+        "border": true,
+        "minimumHeight": "500px"
+      },
+
+      "toolbar": {
+        "style": "compact-technical",
+        "position": "top",
+        "actions": [
+          "reset",
+          "help",
+          "fullscreen"
+        ]
+      },
+
+      "feedback": {
+        "success": {
+          "label": "CORRECT",
+          "useSuccessColor": true
+        },
+
+        "error": {
+          "label": "ERROR",
+          "useDangerColor": true
+        },
+
+        "warning": {
+          "label": "CHECK",
+          "useWarningColor": true
+        }
+      }
+    },
+
+    "difficulty": {
+      "beginner": {
+        "label": "BASIC",
+        "symbol": "I"
+      },
+
+      "intermediate": {
+        "label": "INTERMEDIATE",
+        "symbol": "II"
+      },
+
+      "advanced": {
+        "label": "ADVANCED",
+        "symbol": "III"
+      }
+    },
+
+    "status": {
+      "stable": {
+        "label": "STABLE",
+        "symbol": "●"
+      },
+
+      "experimental": {
+        "label": "EXPERIMENTAL",
+        "symbol": "▲"
+      },
+
+      "beta": {
+        "label": "BETA",
+        "symbol": "◆"
+      },
+
+      "deprecated": {
+        "label": "ARCHIVED",
+        "symbol": "○"
+      }
+    },
+
+    "buttons": {
+      "primary": {
+        "style": "solid-accent",
+        "borderRadius": "4px",
+        "uppercase": false
+      },
+
+      "secondary": {
+        "style": "outlined",
+        "borderRadius": "4px"
+      },
+
+      "technical": {
+        "font": "mono",
+        "prefix": ">",
+        "example": "> iniciar simulador"
+      }
+    },
+
+    "forms": {
+      "inputStyle": "technical-flat",
+
+      "rules": {
+        "borderRadius": "4px",
+        "visibleLabels": true,
+        "placeholderSecondary": true,
+        "focusUsesAreaAccent": true,
+        "avoidFloatingLabels": true
+      }
+    },
+
+    "code": {
+      "font": "IBM Plex Mono",
+      "background": "#080A0C",
+      "border": "#30363D",
+      "borderRadius": "4px",
+
+      "terminal": {
+        "prompt": "$",
+        "headerStyle": "minimal",
+        "showFakeWindowButtons": false
+      }
+    },
+
+    "technicalMetadata": {
+      "font": "mono",
+
+      "format": "uppercase",
+
+      "separator": "/",
+
+      "examples": [
+        "SYS-004 / INTERMEDIATE / STABLE",
+        "NET-008 / BASIC / UPDATED 2026-09-02",
+        "SWE-012 / ADVANCED / EXPERIMENTAL"
+      ]
+    },
+
+    "icons": {
+      "style": "outline",
+      "strokeWidth": 1.5,
+
+      "rules": [
+        "Use one icon library consistently.",
+        "Do not use emoji as interface icons.",
+        "Icons must represent functions rather than decoration.",
+        "Avoid oversized icons."
+      ]
+    },
+
+    "decorativeElements": {
+      "allowed": [
+        "network-lines",
+        "node-diagrams",
+        "grid-background",
+        "technical-crosshair",
+        "status-led",
+        "document-identifiers",
+        "coordinates",
+        "terminal-prompts",
+        "subtle-circuit-lines"
+      ],
+
+      "backgroundGrid": {
+        "enabled": true,
+        "opacity": 0.025,
+        "size": "32px"
+      },
+
+      "networkPattern": {
+        "enabled": true,
+        "usage": "hero-and-empty-states-only",
+        "opacity": 0.06
+      }
+    },
+
+    "motion": {
+      "philosophy": "functional-not-decorative",
+
+      "duration": {
+        "fast": "120ms",
+        "normal": "180ms",
+        "slow": "300ms"
+      },
+
+      "allowed": [
+        "hover-border",
+        "status-pulse",
+        "panel-expand",
+        "progress-update",
+        "terminal-cursor"
+      ],
+
+      "avoid": [
+        "floating-elements",
+        "constant-parallax",
+        "large-page-transitions",
+        "bouncing-icons",
+        "excessive-scroll-animation"
+      ],
+
+      "respectReducedMotion": true
+    },
+
+    "copyStyle": {
+      "tone": [
+        "direct",
+        "technical",
+        "educational",
+        "concise"
+      ],
+
+      "avoid": [
+        "marketing-hyperbole",
+        "generic-ai-copy",
+        "motivational-slogans",
+        "unnecessary-technical-jargon"
+      ],
+
+      "preferred": {
+        "bad": "Descubre una innovadora experiencia que transformará tu aprendizaje.",
+        "good": "Practica administración de procesos Linux en un entorno simulado."
+      }
+    },
+
+    "pageStructure": {
+      "simulatorListing": [
+        "pageHeader",
+        "areaFilters",
+        "difficultyFilters",
+        "search",
+        "simulatorGrid"
+      ],
+
+      "simulatorDetail": [
+        "breadcrumb",
+        "technicalMetadata",
+        "title",
+        "objective",
+        "instructions",
+        "simulatorWorkspace",
+        "feedback",
+        "relatedSimulators"
+      ],
+
+      "areaPage": [
+        "areaHeader",
+        "areaDescription",
+        "recommendedPath",
+        "simulators",
+        "relatedDocumentation"
+      ]
+    },
+
+    "recommendedLearningPath": {
+      "enabled": true,
+
+      "style": "technical-sequence",
+
+      "example": [
+        "SYS-001",
+        "SYS-002",
+        "SYS-004",
+        "SYS-007"
+      ],
+
+      "visual": "connected-nodes"
+    },
+
+    "accessibility": {
+      "minimumContrast": "WCAG-AA",
+
+      "requirements": [
+        "keyboard-navigation",
+        "visible-focus",
+        "semantic-html",
+        "aria-labels-when-required",
+        "color-not-only-indicator",
+        "reduced-motion-support"
+      ]
+    },
+
+    "footer": {
+      "style": "system-status",
+
+      "sections": [
+        "siteIdentity",
+        "areas",
+        "repository",
+        "support",
+        "systemStatus"
+      ],
+
+      "statusExample": [
+        "SIMULATION NODE",
+        "STATUS: ONLINE",
+        "BUILD: 1.4.2",
+        "LAST UPDATE: 2026-09-02"
+      ]
+    },
+
+    "responsive": {
+      "rules": [
+        "Navigation collapses below tablet breakpoint.",
+        "Simulator workspace becomes single-column on mobile.",
+        "Technical metadata may wrap but must never overflow.",
+        "Tables become horizontally scrollable.",
+        "Desktop decorative network elements disappear on mobile.",
+        "Touch targets must be at least 44px."
+      ]
+    },
+
+    "consistencyRules": [
+      "Every simulator must use an area identifier.",
+      "Every simulator must display difficulty.",
+      "Every simulator should expose its current status.",
+      "Area accent colors must not replace the global theme.",
+      "Do not create unique visual layouts for individual simulators unless required by their functionality.",
+      "Use the same header, footer, typography and spacing throughout the site.",
+      "Use monospaced typography only for technical information.",
+      "Do not use more than one area accent prominently on the same simulator page.",
+      "Prefer borders, spacing and typography over shadows.",
+      "Avoid decorative elements without technical meaning."
+    ]
+  }
+}

@@ -37,5 +37,5 @@ $('#example').addEventListener('click', () => { $('#problem').value = 'interface
 
 function setTheme(theme) { const dark = theme === 'dark'; document.documentElement.dataset.theme = theme; $('#themeToggle').setAttribute('aria-checked', String(dark)); $('.theme-label').textContent = dark ? 'Modo claro' : 'Modo oscuro'; $('.theme-knob').textContent = dark ? '☾' : '☼'; localStorage.setItem('chrismuladores-theme', theme); }
 $('#themeToggle').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
-setTheme(localStorage.getItem('chrismuladores-theme') || 'light');
+setTheme(localStorage.getItem('chrismuladores-theme') || 'dark');
 catalog();

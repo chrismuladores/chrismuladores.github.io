@@ -85,5 +85,5 @@ $('#customExerciseForm').addEventListener('submit', event => {
 });
 $('#themeToggle').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 document.querySelectorAll('.algorithm-tab').forEach(btn=>btn.addEventListener('click',()=>{algorithm=btn.dataset.algorithm;document.querySelectorAll('.algorithm-tab').forEach(b=>b.classList.toggle('active',b===btn));$('#algorithmBadge').textContent=algorithmNames[algorithm];$('#quantumControl').style.display=algorithm==='rr'?'grid':'none';}));
-setTheme(localStorage.getItem('chrismuladores-theme') || 'light');
+setTheme(localStorage.getItem('chrismuladores-theme') || 'dark');
 $('#simulateBtn').addEventListener('click',simulate);renderList();
